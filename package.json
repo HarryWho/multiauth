@@ -1,0 +1,32 @@
+{
+  "name": "multiauth",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "startDev": "node --trace-warnings nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HarryWho/multiauth.git"
+  },
+  "author": "Calvin Bartlett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HarryWho/multiauth/issues"
+  },
+  "homepage": "https://github.com/HarryWho/multiauth#readme",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "connect-mongo": "^4.6.0",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-ejs-layouts": "^2.5.1",
+    "express-session": "^1.17.2",
+    "mongoose": "^6.2.6",
+    "passport": "^0.5.2",
+    "passport-google-oauth20": "^2.0.0",
+    "passport-local": "^1.0.0"
+  }
+}

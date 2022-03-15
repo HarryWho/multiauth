@@ -1,0 +1,36 @@
+<div class="row mt-5 mx-auto">
+  <h2 class="card-title text-primary text-center">Home Page</h2>
+  <div class="col-lg-2"></div>
+  <div class="col-lg-4">
+    <div class="mx-auto">
+
+      <div class="card-body text-center">
+
+
+
+        <a href="/google/auth/google" class="btn btn-danger">Log in with Google</a>
+
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-4">
+    <div class="mx-auto">
+      <div class="card-body">
+        <form action="/local/login" method="post">
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email">
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <button type="submit" id="password" class="form-control btn-primary my-4">Login</button> dont have an account? <a href="/register">Register</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-2"></div>
+</div>

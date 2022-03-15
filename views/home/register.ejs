@@ -1,0 +1,29 @@
+<div class="col-lg-6 mx-auto">
+  <h1 class="text-center">Register Account</h1>
+  <%- include('../partials/_messages') %>
+    <div class="card mx-auto">
+      <div class="card-body">
+        <form action="/local/register" method="post">
+          <div class="form-group">
+            <label for="displayName" class="form-label">Display Name</label>
+            <input type="text" name="displayName" id="displayName" class="form-control" placeholder="Enter Display Name" value="<%= typeof form.displayName!='undefined' ? form.displayName : '' %>">
+          </div>
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email" id="email" class="form-control" placeholder="Enter Email" value="<%= typeof form.email!='undefined' ? form.email : '' %>">
+          </div>
+          <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password" value="<%= typeof form.password!='undefined' ? form.password : '' %>">
+          </div>
+          <div class="form-group">
+            <label for="password2" class="form-label">Retype Password</label>
+            <input type="password" name="password2" id="password2" class="form-control" placeholder="Retype Password" value="<%= typeof form.password2!='undefined' ? form.password2 : '' %>">
+          </div>
+          <div class="form-group">
+            <button type="submit" id="password" class="form-control btn-primary my-4">Register</button> Already have an account? <a href="/">Login</a>
+          </div>
+        </form>
+      </div>
+    </div>
+</div>
