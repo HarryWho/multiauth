@@ -33,6 +33,7 @@ router.post('/register', ensureGuest, async(req, res, next) => {
       try {
         const user = new User(newUser)
         user.save()
+        req.flash('success_msg', "You successfully registered. You may now log in")
         res.redirect('/')
       } catch (error) {
         console.log(error)

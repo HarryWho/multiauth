@@ -1,5 +1,6 @@
 const User = require('../models/googleSchema')
 const bcrypt = require('bcryptjs')
+const { escapeRegExpChars } = require('ejs/lib/utils')
 module.exports = {
   ensureAuth: function(req, res, next) {
     if (req.isAuthenticated()) {
@@ -15,6 +16,7 @@ module.exports = {
       return next()
     }
   },
+
   verifyForm: async function(body, cb) {
     let errors = []
     if (!body.displayName || !body.email || !body.password || !body.password2) {
