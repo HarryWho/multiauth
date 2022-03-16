@@ -38,7 +38,7 @@ passport.use(new GoogleStrategy({
 
 passport.serializeUser(function(user, cb) {
   process.nextTick(function() {
-    cb(null, { id: user._id, displayName: user.displayName, email: user.email, image: user.image, joined: user.joinedDate });
+    cb(null, { id: user._id, displayName: user.displayName, email: user.email, image: user.image, joined: user.joinedDate, role: user.role });
   });
 });
 

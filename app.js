@@ -13,6 +13,7 @@ config.config({ path: './config/config.env' })
 
 // body parser for form data
 app.use(express.urlencoded({ extended: false }))
+app.use(express.json())
 
 // set up ejs
 app.set('layout', 'layouts/layout')
@@ -40,6 +41,13 @@ app.use('/user', ensureAuth, require('./controllers/user/user'))
 app.use('/google', ensureGuest, require('./controllers/google/google'))
 app.use('/local', ensureGuest, require('./controllers/local/local'))
 
+const { verifyRole } = require('./middleware/verifyRole');
+// local functions
+app.use((req, res, next) => {
+  res.locals.verifyRole = verifyRole;
+  next();
+
+});
 
 // connect MongoDB
 MongoDB(process.env.MONGO_URI);

@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "startDev": "node --trace-warnings nodemon app.js"
+    "startDev": "nodemon app.js"
   },
   "repository": {
     "type": "git",

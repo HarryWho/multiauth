@@ -3,6 +3,7 @@ const { redirect } = require('express/lib/response');
 const router = express.Router();
 const { ensureAuth, ensureGuest } = require('../../middleware/ensureAuth')
 
+//const { verifyRole } = require('../../middleware/verifyRole');
 
 router.get('/', ensureGuest, (req, res) => {
   res.render('home/home')

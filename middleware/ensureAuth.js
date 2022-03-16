@@ -43,4 +43,5 @@ module.exports = {
     const isMatch = await bcrypt.compare(password, user.password);
     cb(isMatch)
   }
+
 }
