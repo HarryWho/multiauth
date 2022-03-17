@@ -7,6 +7,7 @@ const passport = require('passport')
 const path = require('path')
 const MongoStore = require('connect-mongo')
 const flash = require('connect-flash')
+const methodOverride = require('method-override')
 const app = express()
 
 // config file
@@ -16,9 +17,16 @@ config.config({ path: './config/config.env' })
 app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
 
+// Method override
+app.use(methodOverride('_method'))
+
 // set up ejs
 app.set('layout', 'layouts/layout')
 app.set('view engine', 'ejs')
+app.set("layout extractScripts", true)
+app.set("layout extractStyles", true)
+
+
 app.use(ejsLayouts)
 
 // session
@@ -35,10 +43,12 @@ app.use(passport.session()); //persistent login session
 app.use(flash())
 
 // local variables set up
+const { formatDate } = require('./middleware/stringManipulation')
 const { verifyRole } = require('./middleware/verifyRole');
 // local functions
 app.use((req, res, next) => {
   res.locals.verifyRole = verifyRole;
+  res.locals.formateDate = formatDate
   res.locals.error_msg = req.flash('error_msg');
   res.locals.success_msg = req.flash('success_msg');
 
@@ -54,6 +64,7 @@ app.use('/', require('./controllers/home/home'))
 app.use('/user', ensureAuth, require('./controllers/user/user'))
 app.use('/google', ensureGuest, require('./controllers/google/google'))
 app.use('/local', ensureGuest, require('./controllers/local/local'))
+app.use('/article', ensureAuth, require('./controllers/article/articles'))
 
 
 

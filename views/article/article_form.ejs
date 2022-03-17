@@ -1,0 +1,37 @@
+<% let statusValues=['Public', 'Private'] %>
+  <div class="col-sm-8 mx-auto mt-5 pt-2">
+    <fieldset>
+      <legend>
+        <h3 class="text-info">
+          <%= caption%> Article</h3>
+      </legend>
+      <form action="<%= action %>" method="post">
+        <div class="form-group">
+          <label for="title" class="form-label">Title</label>
+          <input type="text" class="form-control" name="title" id="title" value="<%= typeof article.title!='' ? article.title: '' %>">
+        </div>
+        <div class="form-group">
+          <label for="status" class="form-label">Title</label>
+          <select name="status" id="status" class="form-control form-select">
+            <% statusValues.forEach(value=>{%>
+              <option value="<%=value.toLowerCase()%>" <%- article.status === value.toLowerCase() ? 'selected' : ''%>><%=value%></option>
+            <%})%>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="body" class="form-label">Article</label>
+          <textarea type="text" name="body" id="body" class="form-control"><%= typeof article.body!='' ? article.body: '' %></textarea>
+        </div>
+        <div class="form-group">
+          <input type="submit" class="btn-primary mt-2" value="<%=caption%>">
+        </div>
+
+      </form>
+    </fieldset>
+
+
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ckeditor/4.17.2/ckeditor.js" integrity="sha512-QuHtmTNLFyCbmk2jGlr0URK0XiNn1G0nHYMaNfbOLQgXBiO6RllC+xFkPO5YnG6zYnRVUj6b5uSXwmJeJgOLBw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script>
+    CKEDITOR.replace('body')
+  </script>
