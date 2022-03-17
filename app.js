@@ -30,7 +30,7 @@ app.set("layout extractStyles", true)
 app.use(ejsLayouts)
 
 // session
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 app.use(session({
   secret: 'keyboard cat',
@@ -43,12 +43,15 @@ app.use(passport.session()); //persistent login session
 app.use(flash())
 
 // local variables set up
-const { formatDate } = require('./middleware/stringManipulation')
+const { formatDate, stripTags, truncate } = require('./middleware/stringManipulation')
 const { verifyRole } = require('./middleware/verifyRole');
+
 // local functions
 app.use((req, res, next) => {
   res.locals.verifyRole = verifyRole;
-  res.locals.formateDate = formatDate
+  res.locals.formateDate = formatDate;
+  res.locals.stripTags = stripTags;
+  res.locals.truncate = truncate;
   res.locals.error_msg = req.flash('error_msg');
   res.locals.success_msg = req.flash('success_msg');
 

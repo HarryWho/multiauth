@@ -1,0 +1,39 @@
+<div class="row g-2 mt-5 pt-2">
+  <% if(articles.length > 0) { %>
+    <h3 class="text-info text-center">
+      <%=caption%>
+    </h3>
+    <% articles.forEach(article=>{%>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card">
+          <div class="card-header bg-warning position-relative">
+            <img src="<%=article.author.image%>" alt="User Image" width="22px" class="rounded-circle">
+            <a href="/article/by/<%=article.author._id%>">
+              <%= article.author.displayName %>
+            </a>
+            <% if(article.author._id == user.id) {%>
+              <%- include('../partials/_edit_button.ejs', {article: article}) %>
+                <%}%>
+          </div>
+          <div class="card-title p-2">
+            <%= article.title %>
+          </div>
+          <div class="card-body">
+            <%- truncate(stripTags(article.body), 200) %>
+              <a href="/article/<%=article._id%>">Read More</a>
+          </div>
+          <div class="card-footer">
+
+            <div class="text-muted">
+              Created:
+              <%- formatDate(article.createdAt, 'MMMM Do YYYY') %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <%})%>
+
+        <%}else{%>
+          <p>there is no articles</p>
+          <%}%>
+</div>

@@ -7,12 +7,18 @@ require('../../config/local_passport')
 const { ensureGuest, verifyForm } = require('../../middleware/ensureAuth');
 const User = require('../../models/googleSchema');
 
+
+// DESC: login form submitted for authentication and login for the passport-local strategy
+// POST: /local/login 
 router.post('/login',
   passport.authenticate('local', { failureRedirect: '/' }),
   function(req, res) {
     res.redirect('/dashboard');
   });
 
+
+// DESC: Registration form submited and saves data to mongo for passpowrt-local strategy
+// POST: /local/register 
 router.post('/register', ensureGuest, async(req, res, next) => {
   let errors = []
   await verifyForm(req.body, async(errors) => {
